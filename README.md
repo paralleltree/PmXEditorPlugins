@@ -1,6 +1,9 @@
 # PmXEditorPlugins
 A set of plugins for PmdEditor and PmxEditor
 
+[![Build status](https://ci.appveyor.com/api/projects/status/3o8eimvjtv6uxbvb/branch/master?svg=true)](https://ci.appveyor.com/project/paralleltree/pmxeditorplugins/branch/master)
+
+
 ## Requirements
 
   * PmdEditor v0.1.3.9
