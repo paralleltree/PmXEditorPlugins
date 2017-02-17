@@ -50,6 +50,24 @@ namespace WeightedOffsetBlend
             set { checkBoxCustomCentroidEnabled.Checked = value; }
         }
 
+        private bool IsMeasuredInXAxis
+        {
+            get { return checkBoxDistanceXAxis.Checked; }
+            set { checkBoxDistanceXAxis.Checked = value; }
+        }
+
+        private bool IsMeasuredInYAxis
+        {
+            get { return checkBoxDistanceYAxis.Checked; }
+            set { checkBoxDistanceYAxis.Checked = value; }
+        }
+
+        private bool IsMeasuredInZAxis
+        {
+            get { return checkBoxDistanceZAxis.Checked; }
+            set { checkBoxDistanceZAxis.Checked = value; }
+        }
+
         private InterpolationType InterpolationType
         {
             get
@@ -119,6 +137,12 @@ namespace WeightedOffsetBlend
             var view = Host.Connector.View.PMDView;
             var builder = Host.Builder;
 
+            if (!IsMeasuredInXAxis && !IsMeasuredInYAxis && !IsMeasuredInZAxis)
+            {
+                MessageBox.Show(this, "距離を測定する軸が1つ以上必要です。", "距離測定軸");
+                return;
+            }
+
             var selectedv = view.GetSelectedVertexIndices().Select(p => model.Vertex[p]).ToList();
             if (selectedv.Count < 2) return;
 
@@ -132,7 +156,14 @@ namespace WeightedOffsetBlend
                 centroid = Vector3.Divide(gsum, posv.Count);
             }
 
-            var distv = posv.Select(p => Vector3.Distance(centroid, p)).ToList();
+            var distv = posv.Select(p =>
+            {
+                float dist = 0;
+                if (IsMeasuredInXAxis) dist += (float)Math.Pow(p.X - centroid.X, 2);
+                if (IsMeasuredInYAxis) dist += (float)Math.Pow(p.Y - centroid.Y, 2);
+                if (IsMeasuredInZAxis) dist += (float)Math.Pow(p.Z - centroid.Z, 2);
+                return (float)Math.Sqrt(dist);
+            }).ToList();
             float maxdist = distv.Max();
 
             for (int i = 0; i < selectedv.Count; i++)

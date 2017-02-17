@@ -42,8 +42,13 @@
             this.radioButtonEllipse = new System.Windows.Forms.RadioButton();
             this.customCentroidBox = new PEPluginFormTest.Vector3Box();
             this.directionVectorBox = new PEPluginFormTest.Vector3Box();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBoxDistanceXAxis = new System.Windows.Forms.CheckBox();
+            this.checkBoxDistanceYAxis = new System.Windows.Forms.CheckBox();
+            this.checkBoxDistanceZAxis = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownScale)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -99,7 +104,7 @@
             // 
             // buttonExecute
             // 
-            this.buttonExecute.Location = new System.Drawing.Point(34, 185);
+            this.buttonExecute.Location = new System.Drawing.Point(34, 235);
             this.buttonExecute.Name = "buttonExecute";
             this.buttonExecute.Size = new System.Drawing.Size(75, 23);
             this.buttonExecute.TabIndex = 6;
@@ -108,7 +113,7 @@
             // 
             // buttonGetNormalVector
             // 
-            this.buttonGetNormalVector.Location = new System.Drawing.Point(133, 185);
+            this.buttonGetNormalVector.Location = new System.Drawing.Point(133, 235);
             this.buttonGetNormalVector.Name = "buttonGetNormalVector";
             this.buttonGetNormalVector.Size = new System.Drawing.Size(108, 23);
             this.buttonGetNormalVector.TabIndex = 7;
@@ -118,7 +123,7 @@
             // checkBoxCustomCentroidEnabled
             // 
             this.checkBoxCustomCentroidEnabled.AutoSize = true;
-            this.checkBoxCustomCentroidEnabled.Location = new System.Drawing.Point(12, 163);
+            this.checkBoxCustomCentroidEnabled.Location = new System.Drawing.Point(12, 213);
             this.checkBoxCustomCentroidEnabled.Name = "checkBoxCustomCentroidEnabled";
             this.checkBoxCustomCentroidEnabled.Size = new System.Drawing.Size(197, 16);
             this.checkBoxCustomCentroidEnabled.TabIndex = 8;
@@ -128,7 +133,7 @@
             // checkBoxInverse
             // 
             this.checkBoxInverse.AutoSize = true;
-            this.checkBoxInverse.Location = new System.Drawing.Point(12, 141);
+            this.checkBoxInverse.Location = new System.Drawing.Point(12, 191);
             this.checkBoxInverse.Name = "checkBoxInverse";
             this.checkBoxInverse.Size = new System.Drawing.Size(179, 16);
             this.checkBoxInverse.TabIndex = 9;
@@ -199,11 +204,60 @@
             this.directionVectorBox.Size = new System.Drawing.Size(173, 18);
             this.directionVectorBox.TabIndex = 0;
             // 
+            // groupBox2
+            //
+            this.groupBox2.Controls.Add(this.checkBoxDistanceZAxis);
+            this.groupBox2.Controls.Add(this.checkBoxDistanceYAxis);
+            this.groupBox2.Controls.Add(this.checkBoxDistanceXAxis);
+            this.groupBox2.Location = new System.Drawing.Point(12, 141);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(242, 44);
+            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "距離測定軸";
+            //
+            // checkBoxDistanceXAxis
+            //
+            this.checkBoxDistanceXAxis.AutoSize = true;
+            this.checkBoxDistanceXAxis.Checked = true;
+            this.checkBoxDistanceXAxis.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDistanceXAxis.Location = new System.Drawing.Point(12, 18);
+            this.checkBoxDistanceXAxis.Name = "checkBoxDistanceXAxis";
+            this.checkBoxDistanceXAxis.Size = new System.Drawing.Size(43, 16);
+            this.checkBoxDistanceXAxis.TabIndex = 0;
+            this.checkBoxDistanceXAxis.Text = "X軸";
+            this.checkBoxDistanceXAxis.UseVisualStyleBackColor = true;
+            //
+            // checkBoxDistanceYAxis
+            //
+            this.checkBoxDistanceYAxis.AutoSize = true;
+            this.checkBoxDistanceYAxis.Checked = true;
+            this.checkBoxDistanceYAxis.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDistanceYAxis.Location = new System.Drawing.Point(99, 18);
+            this.checkBoxDistanceYAxis.Name = "checkBoxDistanceYAxis";
+            this.checkBoxDistanceYAxis.Size = new System.Drawing.Size(43, 16);
+            this.checkBoxDistanceYAxis.TabIndex = 1;
+            this.checkBoxDistanceYAxis.Text = "Y軸";
+            this.checkBoxDistanceYAxis.UseVisualStyleBackColor = true;
+            //
+            // checkBoxDistanceZAxis
+            //
+            this.checkBoxDistanceZAxis.AutoSize = true;
+            this.checkBoxDistanceZAxis.Checked = true;
+            this.checkBoxDistanceZAxis.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDistanceZAxis.Location = new System.Drawing.Point(186, 18);
+            this.checkBoxDistanceZAxis.Name = "checkBoxDistanceZAxis";
+            this.checkBoxDistanceZAxis.Size = new System.Drawing.Size(43, 16);
+            this.checkBoxDistanceZAxis.TabIndex = 2;
+            this.checkBoxDistanceZAxis.Text = "Z軸";
+            this.checkBoxDistanceZAxis.UseVisualStyleBackColor = true;
+            //
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 217);
+            this.ClientSize = new System.Drawing.Size(272, 271);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.checkBoxInverse);
             this.Controls.Add(this.checkBoxCustomCentroidEnabled);
@@ -222,6 +276,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownScale)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,5 +299,9 @@
         private System.Windows.Forms.RadioButton radioButtonEllipse;
         private System.Windows.Forms.RadioButton radioButtonQuadratic;
         private System.Windows.Forms.RadioButton radioButtonLinear;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox checkBoxDistanceZAxis;
+        private System.Windows.Forms.CheckBox checkBoxDistanceYAxis;
+        private System.Windows.Forms.CheckBox checkBoxDistanceXAxis;
     }
 }
