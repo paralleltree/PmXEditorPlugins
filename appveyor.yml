@@ -21,7 +21,7 @@ after_build:
 
       Get-Date -Format "yyyy/MM/dd" >> $artifacts\readme.txt
 
-      Get-ChildItem **\*.dll -Recurse | Copy-Item -destination $artifacts
+      Get-ChildItem **\*.dll -Recurse | Copy-Item -force -destination $artifacts
 
       & { Remove-Item $artifacts\PmdEPlugin.dll }
 
