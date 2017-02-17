@@ -8,7 +8,7 @@ init:
   - cmd: tzutil /s "Tokyo Standard Time"
 build_script:
   - ps: >-
-      Get-ChildItem **\*.sln | % { msbuild $_ /m /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" }
+      Get-ChildItem **\*.sln | % -ErrorAction Stop { nuget restore $_; msbuild $_ /m /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" }
 after_build:
   - ps: >-
       $artifacts = "PmXEditorPlugins"
@@ -21,7 +21,7 @@ after_build:
 
       Get-Date -Format "yyyy/MM/dd" >> $artifacts\readme.txt
 
-      Get-ChildItem **\*.dll -Recurse | Copy-Item -destination $artifacts
+      Get-ChildItem **\*.dll -Recurse | Copy-Item -force -destination $artifacts
 
       & { Remove-Item $artifacts\PmdEPlugin.dll }
 

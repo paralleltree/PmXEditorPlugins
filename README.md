@@ -12,3 +12,5 @@ A set of plugins for PmdEditor and PmxEditor
 ## Plugins
   * 頂点連続面選択 (ContinuousSelection)
     + 選択済み頂点が属する面とその頂点をすべて選択状態にします。
+  *重み付きオフセット付加 (WeightedOffsetBlend)
+    + 選択頂点の重心、または任意の座標からの距離に対して各選択頂点の座標にオフセットを付加します。
