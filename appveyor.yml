@@ -53,7 +53,7 @@ after_build:
 
               Push-Location $outdir
 
-              7z a "$archivedir\..\$name.zip" $name
+              7z a "..\$archivedir\$name.zip" $name
 
               Pop-Location
 
