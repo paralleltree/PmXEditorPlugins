@@ -28,8 +28,8 @@ namespace WeightedOffsetBlend
             if (args.IsBootup)
             {
                 FormInstance = new MainForm(args.Host);
-                FormInstance.Visible = false;
                 FormInstance.Show();
+                FormInstance.Visible = false;
                 return;
             }
 
