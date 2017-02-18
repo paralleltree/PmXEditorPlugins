@@ -47,7 +47,15 @@ after_build:
 
           Remove-Item -ErrorAction SilentlyContinue "$destdir\SlimDX.dll"
 
-          7z a "$archivedir\$name.zip" $destdir
+          & {
+
+              Push-Location $outdir
+
+              7z a "..\$archivedir\$name.zip" $name
+
+              Pop-Location
+
+          }
 
       }
 artifacts:
