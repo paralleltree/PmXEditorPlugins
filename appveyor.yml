@@ -11,27 +11,50 @@ build_script:
       Get-ChildItem **\*.sln | % -ErrorAction Stop { nuget restore $_; msbuild $_ /m /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" }
 after_build:
   - ps: >-
-      $artifacts = "PmXEditorPlugins"
+      $outdir = "artifacts"
 
-      New-Item -type directory $artifacts
+      $archivedir = "archives"
 
-      "$artifacts Build $env:APPVEYOR_BUILD_VERSION" > $artifacts\readme.txt
+      New-Item -ItemType Directory $outdir
 
-      Get-Content distribution-readme.txt >> $artifacts\readme.txt
+      New-Item -ItemType Directory $archivedir
 
-      Get-Date -Format "yyyy/MM/dd" >> $artifacts\readme.txt
+      Get-ChildItem *.sln -Recurse | % {
 
-      Get-ChildItem **\*.dll -Recurse | Copy-Item -force -destination $artifacts
+          $name = Split-Path $_ -Parent | Split-Path -Leaf
 
-      & { Remove-Item $artifacts\PmdEPlugin.dll }
+          $srcdir = Split-Path $_ -Parent
 
-      & { Remove-Item $artifacts\PmxEPlugin.dll }
+          $destdir = Join-Path $outdir $name
 
-      & { Remove-Item $artifacts\SlimDX.dll }
+          New-Item -ItemType Directory $destdir
 
+          Get-ChildItem -Recurse "$srcdir\**\bin\$configuration\*.dll" | Copy-Item -Destination $destdir
+
+          & {
+
+              $readme = Join-Path $destdir "readme.txt"
+
+              Get-Content "$srcdir\readme.txt" >> $readme
+
+              Get-Content distribution-readme-footer.txt >> $readme
+
+              Get-Date -Format "yyyy/MM/dd" >> $readme
+
+          }
+
+          Remove-Item -ErrorAction SilentlyContinue "$destdir\PmdEPlugin.dll"
+
+          Remove-Item -ErrorAction SilentlyContinue  "$destdir\PmxEPlugin.dll"
+
+          Remove-Item -ErrorAction SilentlyContinue  "$destdir\SlimDX.dll"
+
+          7z a "$archivedir\$name.zip" $destdir
+
+      }
 artifacts:
-  - path: PmXEditorPlugins
-    name: PmXEditorPlugins
+  - path: archives
+    name: PEPlugins
 deploy:
   - provider: GitHub
     tag: build-$(appveyor_build_version)
