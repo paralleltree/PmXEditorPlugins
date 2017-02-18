@@ -67,7 +67,7 @@ deploy:
     release: PmXEditorPlugins Build $(appveyor_build_version)
     auth_token:
       secure: KkbkUfg5iFaqdqxRAHRvPZv5+nfF99DyufxN6IijxL2TWoV3QTdkAkrnyNvIPt9+
-    artifact: archives\*.zip
+    artifact: /.*\.zip/
     draft: true
     on:
       branch: master
