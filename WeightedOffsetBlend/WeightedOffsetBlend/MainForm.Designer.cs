@@ -150,7 +150,7 @@
             this.groupBox1.Size = new System.Drawing.Size(242, 44);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "補完方式";
+            this.groupBox1.Text = "補間方式";
             // 
             // radioButtonLinear
             // 
@@ -161,7 +161,7 @@
             this.radioButtonLinear.Size = new System.Drawing.Size(71, 16);
             this.radioButtonLinear.TabIndex = 0;
             this.radioButtonLinear.TabStop = true;
-            this.radioButtonLinear.Text = "線形補完";
+            this.radioButtonLinear.Text = "線形補間";
             this.radioButtonLinear.UseVisualStyleBackColor = true;
             // 
             // radioButtonQuadratic
@@ -171,7 +171,7 @@
             this.radioButtonQuadratic.Name = "radioButtonQuadratic";
             this.radioButtonQuadratic.Size = new System.Drawing.Size(65, 16);
             this.radioButtonQuadratic.TabIndex = 1;
-            this.radioButtonQuadratic.Text = "2次補完";
+            this.radioButtonQuadratic.Text = "2次補間";
             this.radioButtonQuadratic.UseVisualStyleBackColor = true;
             // 
             // radioButtonEllipse
@@ -181,7 +181,7 @@
             this.radioButtonEllipse.Name = "radioButtonEllipse";
             this.radioButtonEllipse.Size = new System.Drawing.Size(71, 16);
             this.radioButtonEllipse.TabIndex = 2;
-            this.radioButtonEllipse.Text = "楕円補完";
+            this.radioButtonEllipse.Text = "楕円補間";
             this.radioButtonEllipse.UseVisualStyleBackColor = true;
             // 
             // customCentroidBox

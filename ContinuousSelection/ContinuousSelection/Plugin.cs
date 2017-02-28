@@ -45,14 +45,14 @@ namespace ContinuousSelection
                 q.Enqueue(selectedv);
                 while (q.Count > 0)
                 {
-                    var current = q.Dequeue();
+                    int current = q.Dequeue();
                     if (visit.Contains(current)) continue;
                     visit.Add(current);
 
-                    foreach (var fi in rev[current])
+                    foreach (int fi in rev[current])
                     {
                         visitf.Add(fi);
-                        foreach (var vi in map[fi])
+                        foreach (int vi in map[fi])
                         {
                             q.Enqueue(vi);
                         }
